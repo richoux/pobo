@@ -35,10 +35,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material.icons.outlined.Menu
+//import androidx.compose.material.icons.Icons
+//import androidx.compose.material.icons.outlined.Home
+//import androidx.compose.material.icons.outlined.Info
+//import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -49,7 +49,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -114,7 +113,7 @@ fun rememberForeverLazyListState(
 }
 
 @Composable
-private fun RowMenu( text: String, content: String, icon: ImageVector, onClick: () -> Unit ) {
+private fun RowMenu(text: String, content: String, icon: Int, onClick: () -> Unit) {
   Row(
     modifier= Modifier
       .fillMaxWidth()
@@ -129,7 +128,7 @@ private fun RowMenu( text: String, content: String, icon: ImageVector, onClick: 
     verticalAlignment = Alignment.CenterVertically
   ) {
     Icon(
-      icon,
+      painter = painterResource(id = icon),
       modifier = Modifier
         .size(36.dp)
         .padding(start = 8.dp),
@@ -380,7 +379,7 @@ class MainActivity : AppCompatActivity() {
                   IconButton(onClick = {
                     navController.popBackStack()
                   }) {
-                    Icon(Icons.Outlined.Home, contentDescription = "Home")
+                    Icon(painter = painterResource(id = R.drawable.home_24px), contentDescription = "Home")
                   }
                 }
                 else {
@@ -389,7 +388,7 @@ class MainActivity : AppCompatActivity() {
                       scaffoldState.drawerState.open()
                     }
                   }) {
-                    Icon(Icons.Outlined.Menu, contentDescription = "Menu")
+                    Icon(painter = painterResource(id = R.drawable.menu_24px), contentDescription = "Menu")
                   }
                 }
               },
@@ -415,7 +414,7 @@ class MainActivity : AppCompatActivity() {
               RowMenu(
                 text = stringResource(R.string.about),
                 content = "About",
-                icon = Icons.Outlined.Info,
+                icon = R.drawable.info_24px,
                 onClick = {
                   scope.launch {
                     scaffoldState.drawerState.close()
@@ -427,7 +426,6 @@ class MainActivity : AppCompatActivity() {
                 text = stringResource(R.string.language),
                 content = "Language",
                 icon = R.drawable.language_icon,
-//                icon = Icons.Outlined.Settings,
                 onClick = {
                   showLanguages.value = true
                 }

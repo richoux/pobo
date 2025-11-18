@@ -4,13 +4,12 @@ import android.content.pm.ActivityInfo
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color as CColor
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -38,14 +37,14 @@ fun GameActions(viewModel: GameViewModel = viewModel()) {
       onClick = { viewModel.goBackMove() },
       enabled = canGoBack
     ) {
-      Icon(Icons.Filled.ArrowForward, contentDescription = "Undo Move")
+      Icon(painter = painterResource(id = R.drawable.arrow_forward_24px), contentDescription = "Undo Move")
     }
     IconButton(
       modifier = Modifier.disableSplitMotionEvents(),
       onClick = { viewModel.goForwardMove() },
       enabled = canGoForward
     ) {
-      Icon(Icons.Filled.ArrowBack, contentDescription = "Redo Move")
+      Icon(painter = painterResource(id = R.drawable.arrow_back_24px), contentDescription = "Redo Move")
     }
   }
   else {
@@ -54,14 +53,14 @@ fun GameActions(viewModel: GameViewModel = viewModel()) {
       onClick = { viewModel.goBackMove() },
       enabled = canGoBack
     ) {
-      Icon(Icons.Filled.ArrowBack, contentDescription = "Undo Move")
+      Icon(painter = painterResource(id = R.drawable.arrow_back_24px), contentDescription = "Undo Move")
     }
     IconButton(
       modifier = Modifier.disableSplitMotionEvents(),
       onClick = { viewModel.goForwardMove() },
       enabled = canGoForward
     ) {
-      Icon(Icons.Filled.ArrowForward, contentDescription = "Redo Move")
+      Icon(painter = painterResource(id = R.drawable.arrow_forward_24px), contentDescription = "Redo Move")
     }
   }
 }
