@@ -12,30 +12,11 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.AlertDialog
-import androidx.compose.material.Button
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
@@ -204,54 +185,22 @@ private fun RowMenuPopup( text: String, content: String, icon: Int, onClick: () 
               .background(MaterialTheme.colors.primaryVariant)
               .weight(9f)
           ) {
-            item {
-              ItemLanguage("English", "en")
-            }
-            item {
-              ItemLanguage("اللغة العربية", "ar")
-            }
-            item {
-              ItemLanguage("Český", "cs")
-            }
-            item {
-              ItemLanguage("Deutsch", "de")
-            }
-            item {
-              ItemLanguage("Ελληνική", "el")
-            }
-            item {
-              ItemLanguage("Español", "es")
-            }
-            item {
-              ItemLanguage("Français", "fr")
-            }
-            item {
-              ItemLanguage("Italiana", "it")
-            }
-            item {
-              ItemLanguage("עברית", "iw")
-            }
-            item {
-              ItemLanguage("日本語", "ja")
-            }
-            item {
-              ItemLanguage("Polski", "pl")
-            }
-            item {
-              ItemLanguage("Português", "pt")
-            }
-            item {
-              ItemLanguage("Slovenský", "sk")
-            }
-            item {
-              ItemLanguage("Tiếng Việt", "vi")
-            }
-            item {
-              ItemLanguage("简体中文", "zh")
-            }
-            item {
-              ItemLanguage("繁體中文", "zh-Hant-TW")
-            }
+            item { ItemLanguage("English", "en") }
+            item { ItemLanguage("اللغة العربية", "ar") }
+            item { ItemLanguage("Český", "cs") }
+            item { ItemLanguage("Deutsch", "de") }
+            item { ItemLanguage("Ελληνική", "el") }
+            item { ItemLanguage("Español", "es") }
+            item { ItemLanguage("Français", "fr") }
+            item { ItemLanguage("Italiana", "it") }
+            item { ItemLanguage("עברית", "iw") }
+            item { ItemLanguage("日本語", "ja") }
+            item { ItemLanguage("Polski", "pl") }
+            item { ItemLanguage("Português", "pt") }
+            item { ItemLanguage("Slovenský", "sk") }
+            item { ItemLanguage("Tiếng Việt", "vi") }
+            item { ItemLanguage("简体中文", "zh") }
+            item { ItemLanguage("繁體中文", "zh-Hant-TW") }
           }
           Row(
             modifier = Modifier
@@ -356,6 +305,7 @@ class MainActivity : AppCompatActivity() {
         val scope = rememberCoroutineScope()
 
         Scaffold(
+          modifier = Modifier.systemBarsPadding(),
           scaffoldState = scaffoldState,
           topBar = {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -401,9 +351,7 @@ class MainActivity : AppCompatActivity() {
                 content = "HowTo",
                 icon = R.drawable.question_mark,
                 onClick = {
-                  scope.launch {
-                    scaffoldState.drawerState.close()
-                  }
+                  scope.launch { scaffoldState.drawerState.close() }
                   navController.navigate(Screen.HowToPlay.route)
                 }
               )
@@ -412,9 +360,7 @@ class MainActivity : AppCompatActivity() {
                 content = "About",
                 icon = R.drawable.info_24px,
                 onClick = {
-                  scope.launch {
-                    scaffoldState.drawerState.close()
-                  }
+                  scope.launch { scaffoldState.drawerState.close() }
                   navController.navigate(Screen.About.route)
                 }
               )
@@ -422,9 +368,7 @@ class MainActivity : AppCompatActivity() {
                 text = stringResource(R.string.language),
                 content = "Language",
                 icon = R.drawable.language_icon,
-                onClick = {
-                  showLanguages.value = true
-                }
+                onClick = { showLanguages.value = true }
               )
               RowMenuPaintNoTint(
                 text = stringResource(R.string.buy_me_a_coffee),

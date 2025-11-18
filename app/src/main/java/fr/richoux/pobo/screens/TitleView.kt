@@ -34,7 +34,8 @@ fun TitleView(navController: NavController, gameViewModel: GameViewModel) {
       .fillMaxSize()
       .background(MaterialTheme.colors.primaryVariant)
       .padding(16.dp)
-      .disableSplitMotionEvents(),
+      .disableSplitMotionEvents()
+      .systemBarsPadding(),
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
     Text(
